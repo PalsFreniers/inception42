@@ -14,13 +14,6 @@ else
 	wp --allow-root core config --dbname=${MARIADB_DATABASE} --dbuser=${MARIADB_USER} --dbpass=${MARIADB_PASSWORD} --dbhost=${MARIADB_HOSTNAME} --dbprefix=wp_ --path=${WP_DIR}
 	wp --allow-root core install --url=https://${PROJECT_URL} --title="${WP_TITLE}" --admin_user=${WP_ADMIN_USER} --admin_password=${WP_ADMIN_PASSWORD} --admin_email=${WP_ADMIN_EMAIL} --path=${WP_DIR}
 	wp --allow-root user create ${WP_USER} ${WP_USER_EMAIL} --user_pass=${WP_USER_PASSWORD} --role=author --path=${WP_DIR}
-	echo "[*] Installing redis-cache plugin"
-	wp --allow-root config set WP_REDIS_HOST ${REDIS_HOSTNAME}
-	wp --allow-root config set WP_REDIS_PORT ${REDIS_PORT}
-	wp --allow-root config set WP_CACHE_KEY_SALT ${PROJECT_URL}
-	wp --allow-root plugin install redis-cache --activate
-	wp --allow-root plugin update --all
-	wp --allow-root redis enable
 fi
 
 if [ ! -d /run/php ]; then
