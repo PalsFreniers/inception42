@@ -16,8 +16,6 @@ RUN chmod +x /usr/local/bin/launch_wrapper.sh
 
 ENTRYPOINT ["/usr/local/bin/launch_wrapper.sh"]
 
-# Link the wp-content directory to the volume
 WORKDIR /var/www/wordpress/
 
-# Start php-fpm
 CMD ["/usr/sbin/php-fpm7.4", "-F"]

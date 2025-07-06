@@ -14,8 +14,6 @@ RUN chmod +x /usr/local/bin/launch_wrapper.sh
 
 COPY ./config/mysqld.conf /etc/mysql/mysql.conf.d/50-web.conf
 
-# Entrypoint
 ENTRYPOINT ["/usr/local/bin/launch_wrapper.sh"]
 
-# Launch the MariaDB server
 CMD ["mysqld", "--bind-address=0.0.0.0"]
